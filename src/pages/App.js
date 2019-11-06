@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
-import {Header, Search} from '../components';
+import {Header, Search, Card} from '../components';
 
 export default function App() {
     return (
@@ -8,6 +8,8 @@ export default function App() {
             <Header/>
             <Container>
                 <Search/>
+                <Card />
+                <Card />
             </Container>
         </Fragment>
     );
