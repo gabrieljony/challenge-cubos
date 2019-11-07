@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
 		font-size: 100%;
 		font: inherit;
 		vertical-align: baseline;
+		text-decoration: none;
 	}
 	article, aside, details, figcaption, figure,
 	footer, header, hgroup, menu, nav, section {

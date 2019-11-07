@@ -1,11 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import Card from "./Card";
+import { Link } from "react-router-dom";
 
 const RenderCard = movie =>
     movie &&
-    movie.map(info => {
-        return <Card {...info} key={info.id} />;
+    movie.map((info, index) => {
+        return (
+            <Link to={`/movie`} key={index}>
+                <Card {...info} key={info.id} />
+            </Link>
+        );
     });
 
 const CardList = props => {
