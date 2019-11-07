@@ -2,7 +2,16 @@ import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import { color } from "../theme";
 
-export default class Movie extends Component {
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { getMovie } from "../redux/actions";
+
+class Movie extends Component {
+
+  componentDidMount() {
+    this.props.getMovie(this.props.match.params.id);
+  }
+
   render() {
     return (
         <Fragment>
@@ -17,6 +26,12 @@ export default class Movie extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({ state: state.movieReducer });
+
+const mapDispatchToProps = dispatch => bindActionCreators({ getMovie }, dispatch);
+
+export default connect( mapStateToProps, mapDispatchToProps )(Movie);
 
 export const Full = styled.div`
   width: 100%;
