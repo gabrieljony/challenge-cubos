@@ -81,6 +81,6 @@ const Box = styled.div`
 
 const Sinopse = styled.p`
   font-size: 1.2em;
-  color: ${color.primary};
+  color: ${color.gray2};
   font-family: ${font.lato};
 `;

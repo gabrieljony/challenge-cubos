@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
-import { Header, Search } from '../components';
+import { Search } from '../components';
 import CardList from '../components/CardList';
 
 import { bindActionCreators } from "redux";
@@ -16,7 +16,7 @@ class App extends Component {
     render() {
         return (
             <Fragment>
-                <Header />
+                
                 <Container>
                     <Search />
                     <CardList />

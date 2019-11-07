@@ -32,7 +32,7 @@ export const Header = styled.header`
 `;
 
 export const Title = styled.h1`
-  color: ${color.black};
+  color: ${color.white};
   font-size: 3em;
 `;
 

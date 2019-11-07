@@ -1,16 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { App } from './pages';
 import * as serviceWorker from './serviceWorker';
 import { GlobalStyle, FontFamilies } from "./theme";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import { BrowserRouter } from "react-router-dom";
+import { Routes } from "./router";
+import { Header } from './components';
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
-        <GlobalStyle />
-        <FontFamilies />
+        <BrowserRouter>
+            <Header />
+            <Routes />
+            <GlobalStyle />
+            <FontFamilies />
+        </BrowserRouter>
     </Provider>
     , document.getElementById('root'));
 

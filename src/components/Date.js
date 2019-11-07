@@ -4,13 +4,14 @@ import { color, font } from '../theme';
 
 export default function Date() {
     return (
-        <Title>20/11/2019</Title>
+        <Title>25/10/2017</Title>
     );
 }
 
 const Title = styled.h1`
-  color: ${color.primary};
-  font-family: ${font.abel};
+  color: ${color.gray2};
+  font-family: ${font.lato};
+  opacity: 0.5;
   font-size: 1.5em;
   position: relative;
   left: 140px;

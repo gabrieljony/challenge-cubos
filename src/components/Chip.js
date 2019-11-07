@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
-import { color } from '../theme';
+import { color, font } from '../theme';
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -37,17 +37,18 @@ export default connect(mapStateToProps, mapDispatchToProps)(Chip);
 
 export const Container = styled.div`
   background-color: ${color.white};
-  border: 1px solid ${color.tertiary};
+  border: 2px solid ${color.primary};
   border-radius: 20px;
   height: 30px;
-  padding: 3px;
+  padding: 3px 15px;
   display: inline-flex;
   justify-content: center;
-  align-genres: center;
+  align-items: center;
   margin-right: 10px;
   margin-top: 20px;
 `;
 
 export const Title = styled.h1`
-  color: ${color.tertiary};
+  color: ${color.primary};
+  font-family: ${font.abel};
 `;
