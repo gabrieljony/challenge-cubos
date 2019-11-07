@@ -1,15 +1,17 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import {App} from './pages';
+import { App } from './pages';
 import * as serviceWorker from './serviceWorker';
 import { GlobalStyle, FontFamilies } from "./theme";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 ReactDOM.render(
-        <Fragment>
-            <App />
-            <GlobalStyle />
-            <FontFamilies />
-        </Fragment>
+    <Provider store={store}>
+        <App />
+        <GlobalStyle />
+        <FontFamilies />
+    </Provider>
     , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
