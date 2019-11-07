@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import {color} from '../theme';
+import { color } from '../theme';
 
 export default class Chip extends Component {
-  render() {
-    return (
-        <Container>
-            <Title>genero</Title>
-        </Container>
-      );
-  }
+    render() {
+        return (
+            <Container>
+                <Title>genero</Title>
+            </Container>
+        );
+    }
 }
 
 export const Container = styled.div`

@@ -2,19 +2,43 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { color } from '../theme';
 
-export default class components extends Component {
-  render() {
-    return (
-        <Container>
-            <input type="text" placeholder="Busque um filme por nome, ano ou gênero..."/>
-        </Container>
-      );
+// Redux
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { handleSearch } from "../redux/actions";
+
+class Search extends Component {
+    render() {
+        const { searchValue } = this.props.state;
+        const { handleSearch } = this.props;
+        return (
+            <Container>
+                <input
+                    type="text"
+                    placeholder="Busque um filme por nome, ano ou gênero..."
+                    value={searchValue}
+                    onChange={e => handleSearch(e)}
+                />
+            </Container>
+        );
     }
 }
 
+
+// Redux
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({ handleSearch }, dispatch);
+
+const mapStateToProps = state => ({
+    state: state.movieReducer
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
+
+// Styles
 const Container = styled.div`
     input{
-        width: 100%;
+        width: 97%;
         height: 2em;
         border-radius: 2em;
         margin: 1em 0;
@@ -23,8 +47,8 @@ const Container = styled.div`
         background-color: ${color.gray};
         color: ${color.black};
         font-size: 1.5em;
-        /* padding-left: 1em;
-        padding-right: 1em; */
+        padding-left: 1.5%;
+        padding-right: 1.5%;
         &::placeholder {
             color: ${color.black};
             opacity: 0.5;

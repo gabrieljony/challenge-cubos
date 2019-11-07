@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
-import {Header, Search, Card} from '../components';
+import { Header, Search } from '../components';
+import CardList from '../components/CardList';
 
 export default function App() {
     return (
         <Fragment>
-            <Header/>
+            <Header />
             <Container>
-                <Search/>
-                <Card />
-                <Card />
+                <Search />
+                <CardList />
             </Container>
         </Fragment>
     );
@@ -24,16 +24,18 @@ const Container = styled.div`
 
     }
     @media (min-width: 576px) {
-        
+
     }
     @media (min-width: 768px) {
-        
+
     }
     @media (min-width: 992px) {
-        
+        margin-right: 15%;
+        margin-left: 15%;
     }
     @media (min-width: 1200px) {
-        
+        margin-right: 15%;
+        margin-left: 15%;
     }
 `;
 

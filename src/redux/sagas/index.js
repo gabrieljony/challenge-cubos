@@ -1,6 +1,7 @@
 import { all } from "redux-saga/effects";
 import { put, takeLatest, call, delay } from 'redux-saga/effects'
 import api from "../../services/api";
+import { movies } from "../../services/api";
 
 const Types = {
     HANDLE_SEARCH: "HANDLE_SEARCH",
@@ -15,7 +16,7 @@ export function* getDataApi(data) {
         yield delay(1000);
         const query = data.payload.searchValue;
         yield put({ type: Types.REQUEST_DATA_API });
-        const response = yield call(api.get, query);
+        const response = yield call(api.get, movies.options.url + query);
         yield put({
             type: Types.REQUEST_SUCESS,
             payload: { movies: response.data }
