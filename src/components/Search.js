@@ -26,12 +26,9 @@ class Search extends Component {
 
 
 // Redux
-const mapDispatchToProps = dispatch =>
-    bindActionCreators({ handleSearch }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ handleSearch }, dispatch);
 
-const mapStateToProps = state => ({
-    state: state.movieReducer
-});
+const mapStateToProps = state => ({ state: state.movieReducer });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
 

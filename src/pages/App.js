@@ -10,13 +10,13 @@ import { connect } from "react-redux";
 import { getApiGenres } from "../redux/actions";
 
 class App extends Component {
+    
     componentDidMount() {
         this.props.getApiGenres();
     }
     render() {
         return (
             <Fragment>
-                
                 <Container>
                     <Search />
                     <CardList />
@@ -26,13 +26,9 @@ class App extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch =>
-    bindActionCreators({ getApiGenres }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ getApiGenres }, dispatch);
 
-export default connect(
-    null,
-    mapDispatchToProps
-)(App);
+export default connect( null, mapDispatchToProps )(App);
 
 const Container = styled.div`
     margin-right: auto;
