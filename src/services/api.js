@@ -18,7 +18,7 @@ export const movies = {
 };
 
 // Buscar filme pelo seu id passado como parametro
-export const movieId = id => ({
+export const movie = id => ({
     options: {
         url: `movie/${id}?api_key=${apikey}&${language}&append_to_response=videos`
     }

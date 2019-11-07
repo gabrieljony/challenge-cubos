@@ -1,24 +1,27 @@
 import React from 'react';
 import styled from "styled-components";
-import {color, font} from '../theme';
+import { color, font } from '../theme';
 
 export default function Fab() {
-  return (
-    <Container>
-        <Title>80%</Title>
-    </Container>
-  );
+    return (
+        <Container>
+            <Title>80%</Title>
+        </Container>
+    );
 }
 
 export const Container = styled.div`
   width: 80px;
   height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 100px;
   border: 4px solid ${color.secondary};
   background-color: ${color.tertiary};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 30px;
+  top: 30px;
 `;
 
 export const Title = styled.h1`
