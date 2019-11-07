@@ -1,8 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import App from "../pages/App";
-import Movie from "../pages/Movie";
+import {App, Movie} from "../pages";
 
 export const Routes = () => {
   return (

@@ -5,6 +5,7 @@ export const color = {
   tertiary:  "#3478a3",
   gray:      "#ebebeb",
   gray2:     "#6d6d6d",
+  gray3:     "#f2f2f2",
   black:     "#3d3d3d",
   white:     "#ffffff"
 };

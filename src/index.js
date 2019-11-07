@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import { GlobalStyle, FontFamilies } from "./theme";
+import { GlobalStyle, FontFamilies, Container } from "./theme";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { BrowserRouter } from "react-router-dom";
@@ -12,7 +12,9 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <Header />
-            <Routes />
+            <Container>
+                <Routes />
+            </Container>
             <GlobalStyle />
             <FontFamilies />
         </BrowserRouter>

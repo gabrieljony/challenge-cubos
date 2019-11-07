@@ -40,7 +40,7 @@ const Container = styled.article`
 const Img = styled.img`
   width: 350px;
   background-color: ${color.primary};
-  height: calc(${heightBox} +  ${heightHeader});
+  height: calc((${heightBox} +  ${heightHeader}));
   @media (max-width: 992px) {
         width: 240px;
         height: calc((${heightBox} +  ${heightHeader}) /1.5);
@@ -50,7 +50,7 @@ const Img = styled.img`
 const Content = styled.div`
   width: 100%;
   background-color: ${color.gray};
-  height: calc(${heightBox} +  ${heightHeader});
+  height: calc((${heightBox} +  ${heightHeader}));
   @media (max-width: 992px) {
         height: calc((${heightBox} +  ${heightHeader}) /1.5);
     }
