@@ -13,7 +13,7 @@ const Title = styled.h1`
   font-family: ${font.lato};
   opacity: 0.5;
   font-size: 1.5em;
-  position: relative;
+  /* position: relative;
   left: 140px;
-  padding-top: 0.2em;
+  padding-top: 0.2em; */
 `;
