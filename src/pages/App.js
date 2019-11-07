@@ -1,19 +1,38 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import { Header, Search } from '../components';
 import CardList from '../components/CardList';
 
-export default function App() {
-    return (
-        <Fragment>
-            <Header />
-            <Container>
-                <Search />
-                <CardList />
-            </Container>
-        </Fragment>
-    );
+import { bindActionCreators } from "redux";
+
+import { connect } from "react-redux";
+
+import { getApiGenres } from "../redux/actions";
+
+class App extends Component {
+    componentDidMount() {
+        this.props.getApiGenres();
+    }
+    render() {
+        return (
+            <Fragment>
+                <Header />
+                <Container>
+                    <Search />
+                    <CardList />
+                </Container>
+            </Fragment>
+        );
+    }
 }
+
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({ getApiGenres }, dispatch);
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(App);
 
 const Container = styled.div`
     margin-right: auto;

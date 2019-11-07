@@ -4,14 +4,17 @@ const Types = {
     HANDLE_SEARCH: "HANDLE_SEARCH",
     REQUEST_DATA_API: "REQUEST_DATA_API",
     REQUEST_SUCESS: "REQUEST_SUCESS",
-    REQUEST_FAILED: "REQUEST_FAILED"
+    REQUEST_FAILED: "REQUEST_FAILED",
+    REQUEST_GENRE_API: "REQUEST_GENRE_API",
+    SUCESS_GENRES_API: "SUCESS_GENRES_API",
 };
 
 const init = {
     searchValue: "",
     movies: null,
     error: false,
-    loading: false
+    loading: false,
+    genres: null,
 };
 
 const movieReducer = (state = init, action) => {
@@ -26,6 +29,9 @@ const movieReducer = (state = init, action) => {
             return { ...state, ...action.payload };
         }
         case Types.REQUEST_FAILED: {
+            return { ...state, ...action.payload };
+        }
+        case Types.SUCESS_GENRES_API: {
             return { ...state, ...action.payload };
         }
         default:

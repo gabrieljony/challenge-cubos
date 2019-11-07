@@ -5,7 +5,6 @@ import Card from "./Card";
 const RenderCard = movie =>
     movie &&
     movie.map(info => {
-        console.log(info)
         return <Card {...info} key={info.id} />;
     });
 
