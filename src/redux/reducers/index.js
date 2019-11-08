@@ -7,6 +7,9 @@ const Types = {
     REQUEST_FAILED: "REQUEST_FAILED",
     REQUEST_GENRE_API: "REQUEST_GENRE_API",
     SUCESS_GENRES_API: "SUCESS_GENRES_API",
+    REQUEST_MOVIE_API: "REQUEST_MOVIE_API",
+    SUCESS_MOVIE_API: "SUCESS_MOVIE_API",
+    ERROR_MOVIE_API: "ERROR_MOVIE_API"
 };
 
 const init = {
@@ -34,6 +37,9 @@ const movieReducer = (state = init, action) => {
         case Types.SUCESS_GENRES_API: {
             return { ...state, ...action.payload };
         }
+        case Types.SUCESS_MOVIE_API: {
+            return { ...state, ...action.payload };
+          }
         default:
             return state;
     }

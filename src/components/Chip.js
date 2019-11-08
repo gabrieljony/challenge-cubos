@@ -4,15 +4,19 @@ import { color, font } from '../theme';
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import PropTypes from "prop-types";
 
 import { getApiGenres } from "../redux/actions";
 
 class Chip extends Component {
+    componentDidMount() {
+        this.props.getApiGenres();
+      }
+
     renderTag = () => {
         const { genres } = this.props.state;
         if (genres) {
-            return genres.filter((genre, index) => {
+            return genres
+            .filter((genre, index) => {
                 return genre.id === this.props.genresIds[index];
             }).map((item, index) => (
                 <Container key={index} title={item.name}>
@@ -25,9 +29,6 @@ class Chip extends Component {
         return this.renderTag() || <Fragment />;
     }
 }
-
-Chip.defaultProps = { genreIds: [] };
-Chip.propTypes = { genresIds: PropTypes.array.isRequired };
 
 const mapStateToProps = state => ({ state: state.movieReducer });
 

@@ -8,8 +8,6 @@ const api = axios.create({
     baseURL: urlAPI
 });
 
-export default api;
-
 // Buscar pelo nome do filme
 export const movies = {
     options: {
@@ -20,7 +18,7 @@ export const movies = {
 // Buscar filme pelo seu id passado como parametro
 export const movie = id => ({
     options: {
-        url: `movie/${id}?api_key=${apikey}&${language}&append_to_response=videos`
+      url: `movie/${id}?api_key=${apikey}&${language}`
     }
 });
 
@@ -32,3 +30,6 @@ export const genres = {
 };
 
 // Buscar filme por ano
+
+
+export default api;

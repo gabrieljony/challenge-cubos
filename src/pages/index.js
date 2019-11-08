@@ -1,4 +1,4 @@
 import App from "./App";
-import Movie from "./Movie";
+import Detail from "./Detail";
 
-export { App, Movie };
+export { App, Detail };

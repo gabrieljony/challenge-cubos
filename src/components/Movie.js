@@ -4,16 +4,15 @@ import { color, font } from '../theme';
 
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { getMovie } from "../redux/actions";
+import { getApiMovie } from "../redux/actions";
 
-import Date from '../components/Date';
-import Fab from '../components/Fab';
-import Chip from '../components/Chip';
+import Date from './Date';
+import Fab from './Fab';
 
 class Movie extends Component {
 
   componentDidMount() {
-    this.props.getMovie(this.props.match.params.id);
+    this.props.getApiMovie(this.props.match.params.id);
   }
 
   render() {
@@ -59,7 +58,6 @@ class Movie extends Component {
                 </Box>
               </BoxContainer>
               <div>
-                <Chip/>
               </div>
               <Fab/>
             </Detail>
@@ -73,7 +71,7 @@ class Movie extends Component {
 
 const mapStateToProps = state => ({ state: state.movieReducer });
 
-const mapDispatchToProps = dispatch => bindActionCreators({ getMovie }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ getApiMovie }, dispatch);
 
 export default connect( mapStateToProps, mapDispatchToProps )(Movie);
 
