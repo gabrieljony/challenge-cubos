@@ -3,11 +3,11 @@ import { Switch, Route } from "react-router-dom";
 
 import {App, Movie} from "../pages";
 
-export const Routes = () => {
-  return (
+const Routes = () => (
     <Switch>
       <Route path="/" component={App} exact/>
-      <Route path="/movie" component={Movie} exact/>
+      <Route path="/movie/:id" component={Movie} exact/>
     </Switch>
   );
-};
+
+  export default Routes;

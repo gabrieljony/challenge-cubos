@@ -5,7 +5,7 @@ import { GlobalStyle, FontFamilies, Container } from "./theme";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { BrowserRouter } from "react-router-dom";
-import { Routes } from "./router";
+import Routes from "./router";
 import { Header } from './components';
 
 ReactDOM.render(
