@@ -6,12 +6,12 @@ import { bindActionCreators } from "redux";
 
 import { connect } from "react-redux";
 
-import { getApiGenres } from "../redux/actions";
+import { getGenre } from "../redux/actions";
 
 class App extends Component {
     
     componentDidMount() {
-        this.props.getApiGenres();
+        this.props.getGenre();
     }
     render() {
         return (
@@ -23,7 +23,7 @@ class App extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ getApiGenres }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ getGenre }, dispatch);
 
 export default connect( null, mapDispatchToProps )(App);
 

@@ -25,7 +25,7 @@ const CardList = props => {
 };
 
 const mapStateToProps = state => ({
-    state: state.movieReducer
+    state: state.reducers
 });
 
 export default connect(mapStateToProps, null)(CardList);

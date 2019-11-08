@@ -1,21 +1,20 @@
 const Types = {
-    HANDLE_SEARCH: "HANDLE_SEARCH",
-    REQUEST_GENRE_API: "REQUEST_GENRE_API",
-    REQUEST_MOVIE_API: "REQUEST_MOVIE_API",
+    REQUEST_SEARCH: "REQUEST_SEARCH",
+    REQUEST_GENRE: "REQUEST_GENRE",
+    REQUEST_MOVIE: "REQUEST_MOVIE",
 };
 
-export const handleSearch = e => ({
-    type: Types.HANDLE_SEARCH,
-    payload: {
-        searchValue: e.target.value
-    }
+export const getSearch = e => ({
+    type: Types.REQUEST_SEARCH,
+    payload: { searchValue: e.target.value }
 });
 
-export const getApiGenres = () => ({
-    type: Types.REQUEST_GENRE_API
+export const getGenre = () => ({
+    type: Types.REQUEST_GENRE
 });
 
-export const getApiMovie = id => ({
-    type: Types.REQUEST_MOVIE_API,
+export const getMovie = id => ({
+    type: Types.REQUEST_MOVIE,
     payload: { id }
-  });
+});
+

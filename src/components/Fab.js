@@ -10,7 +10,7 @@ export default function Fab() {
     );
 }
 
-export const Container = styled.div`
+const Container = styled.div`
   width: 80px;
   height: 80px;
   border-radius: 100px;
@@ -24,7 +24,7 @@ export const Container = styled.div`
   top: 30px;
 `;
 
-export const Title = styled.h1`
+const Title = styled.h1`
   color: ${color.secondary};
   font-family: ${font.abel};
   font-size: 25px;

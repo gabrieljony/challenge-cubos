@@ -5,19 +5,19 @@ import { color } from '../theme';
 // Redux
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { handleSearch } from "../redux/actions";
+import { getSearch } from "../redux/actions";
 
 class Search extends Component {
     render() {
         const { searchValue } = this.props.state;
-        const { handleSearch } = this.props;
+        const { getSearch } = this.props;
         return (
             <Container>
                 <input
                     type="text"
                     placeholder="Busque um filme por nome, ano ou gênero..."
                     value={searchValue}
-                    onChange={e => handleSearch(e)}
+                    onChange={e => getSearch(e)}
                 />
             </Container>
         );
@@ -26,9 +26,9 @@ class Search extends Component {
 
 
 // Redux
-const mapDispatchToProps = dispatch => bindActionCreators({ handleSearch }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ getSearch }, dispatch);
 
-const mapStateToProps = state => ({ state: state.movieReducer });
+const mapStateToProps = state => ({ state: state.reducers });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
 

@@ -1,15 +1,15 @@
 import { combineReducers } from "redux";
 
 const Types = {
-    HANDLE_SEARCH: "HANDLE_SEARCH",
-    REQUEST_DATA_API: "REQUEST_DATA_API",
-    REQUEST_SUCESS: "REQUEST_SUCESS",
+    REQUEST_SEARCH: "REQUEST_SEARCH",
+    REQUEST_GENRE: "REQUEST_GENRE",
+    REQUEST_MOVIE: "REQUEST_MOVIE",
+    REQUEST_API: "REQUEST_API", 
     REQUEST_FAILED: "REQUEST_FAILED",
-    REQUEST_GENRE_API: "REQUEST_GENRE_API",
-    SUCESS_GENRES_API: "SUCESS_GENRES_API",
-    REQUEST_MOVIE_API: "REQUEST_MOVIE_API",
-    SUCESS_MOVIE_API: "SUCESS_MOVIE_API",
-    ERROR_MOVIE_API: "ERROR_MOVIE_API"
+    REQUEST_SUCESS: "REQUEST_SUCESS",
+    MOVIE_FAILED: "MOVIE_FAILED",
+    MOVIE_SUCESS: "MOVIE_SUCESS",
+    GENRES_SUCESS: "GENRES_SUCESS",
 };
 
 const init = {
@@ -20,12 +20,12 @@ const init = {
     genres: null,
 };
 
-const movieReducer = (state = init, action) => {
+const reducers = (state = init, action) => {
     switch (action.type) {
-        case Types.HANDLE_SEARCH: {
+        case Types.REQUEST_SEARCH: {
             return { ...state, ...action.payload };
         }
-        case Types.REQUEST_DATA_API: {
+        case Types.REQUEST_API: {
             return { ...state, loading: true };
         }
         case Types.REQUEST_SUCESS: {
@@ -34,10 +34,10 @@ const movieReducer = (state = init, action) => {
         case Types.REQUEST_FAILED: {
             return { ...state, ...action.payload };
         }
-        case Types.SUCESS_GENRES_API: {
+        case Types.GENRES_SUCESS: {
             return { ...state, ...action.payload };
         }
-        case Types.SUCESS_MOVIE_API: {
+        case Types.MOVIE_SUCESS: {
             return { ...state, ...action.payload };
           }
         default:
@@ -46,6 +46,6 @@ const movieReducer = (state = init, action) => {
 };
 
 
-const rootReducer = combineReducers({ movieReducer: movieReducer });
+const root = combineReducers({ reducers: reducers });
 
-export default rootReducer;
+export default root;

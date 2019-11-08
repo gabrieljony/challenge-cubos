@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { color, font } from '../theme';
-import Date from './Date';
-import Fab from './Fab';
-import Chip from './Chip';
+import {Date, Fab, Chip} from './';
 
 export default class Card extends Component {
     render() {

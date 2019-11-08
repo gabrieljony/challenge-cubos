@@ -2,12 +2,12 @@ import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { getApiMovie } from "../redux/actions";
+import { getMovie } from "../redux/actions";
 import { color } from '../theme';
 
 class Movie extends Component {
   componentDidMount() {
-    this.props.getApiMovie(this.props.match.params.id);
+    this.props.getMovie(this.props.match.params.id);
   }
 
   timeConvert = time => {
@@ -20,7 +20,6 @@ class Movie extends Component {
   };
 
   renderSingle = () => {
-    console.log(this.props.state.movieDetails)
     if (this.props.state.movieDetails) {
       const {
         title,
@@ -92,11 +91,11 @@ class Movie extends Component {
 }
 
 const mapStateToProps = state => ({
-  state: state.movieReducer
+  state: state.reducers
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ getApiMovie }, dispatch);
+  bindActionCreators({ getMovie }, dispatch);
 
 export default connect(
   mapStateToProps,

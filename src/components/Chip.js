@@ -5,11 +5,11 @@ import { color, font } from '../theme';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import { getApiGenres } from "../redux/actions";
+import { getGenre } from "../redux/actions";
 
 class Chip extends Component {
     componentDidMount() {
-        this.props.getApiGenres();
+        this.props.getGenre();
       }
 
     renderTag = () => {
@@ -30,13 +30,13 @@ class Chip extends Component {
     }
 }
 
-const mapStateToProps = state => ({ state: state.movieReducer });
+const mapStateToProps = state => ({ state: state.reducers });
 
-const mapDispatchToProps = dispatch => bindActionCreators({ getApiGenres }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({ getGenre }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chip);
 
-export const Container = styled.div`
+const Container = styled.div`
   background-color: ${color.white};
   border: 2px solid ${color.primary};
   border-radius: 20px;
@@ -49,7 +49,7 @@ export const Container = styled.div`
   margin-top: 20px;
 `;
 
-export const Title = styled.h1`
+const Title = styled.h1`
   color: ${color.primary};
   font-family: ${font.abel};
 `;
