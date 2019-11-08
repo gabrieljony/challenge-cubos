@@ -4,7 +4,6 @@ import Card from "./Card";
 import { Link } from "react-router-dom";
 
 const RenderCard = (movie, props) => {
-    console.log(props.state);
     if (props.state.requestSearchLoad) {
         return <Fragment />;
     }

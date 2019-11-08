@@ -1,86 +1,110 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { color, font } from '../theme';
-
+import React, { Component, Fragment } from "react";
+import styled from "styled-components";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { getApiMovie } from "../redux/actions";
-
-import Date from './Date';
-import Fab from './Fab';
+import { color } from '../theme';
 
 class Movie extends Component {
-
   componentDidMount() {
     this.props.getApiMovie(this.props.match.params.id);
   }
 
-  render() {
-    return (
-      <Full>
+  timeConvert = time => {
+    var number = time;
+    var hours = number / 60;
+    var rhours = Math.floor(hours);
+    var minutes = (hours - rhours) * 60;
+    var rminutes = Math.round(minutes);
+    return `${rhours} h ${rminutes}m`;
+  };
+
+  renderSingle = () => {
+    console.log(this.props.state.movieDetails)
+    if (this.props.state.movieDetails) {
+      const {
+        title,
+        poster_path,
+        overview,
+        status,
+        spoken_languages,
+        runtime,
+        budget,
+        revenue
+      } = this.props.state.movieDetails;
+
+      const languages = spoken_languages.map(({ name }) => name).join(" ")
+      const time = this.timeConvert(runtime);
+      const orcamento = budget.toLocaleString("en-US");
+      const receita = revenue.toLocaleString("en-US");
+      const lucro = (revenue - budget).toLocaleString("en-US")
+
+      return (
+        <Fragment>
           <Header>
-              <Title>Title</Title>
-              <Date/>
+            <Titlle>{title}</Titlle>
           </Header>
-          <Content>
-            <Detail>
-              <SubTitle>
-                  Sinopse
-              </SubTitle>
-              <Descriptions>Lorem import</Descriptions>
-              <SubTitle>
-                  Informações
-              </SubTitle>
-              <BoxContainer>
+          <Container>
+            <Details>
+              <SubTitle>Sinopse</SubTitle>
+              <Sinopse>{overview}</Sinopse>
+              <SubTitle>Informações</SubTitle>
+              <article>
                 <Box>
-                  <Item>Situação</Item>
-                  <SubItem>situação</SubItem>
+                  <SubBoxTitle>Situação</SubBoxTitle>
+                  <SubBox>{status}</SubBox>
                 </Box>
                 <Box>
-                  <Item>Idioma</Item>
-                  <SubItem>situação</SubItem>
+                  <SubBoxTitle>Idioma</SubBoxTitle>
+                  <SubBox>
+                    {languages}
+                  </SubBox>
                 </Box>
                 <Box>
-                  <Item>Duração</Item>
-                  <SubItem>situação</SubItem>
+                  <SubBoxTitle>Duração</SubBoxTitle>
+                  <SubBox>{time}</SubBox>
                 </Box>
                 <Box>
-                  <Item>Orçamento</Item>
-                  <SubItem>situação</SubItem>
+                  <SubBoxTitle>Orçamento</SubBoxTitle>
+                  <SubBox>${orcamento}</SubBox>
                 </Box>
                 <Box>
-                  <Item>Receita</Item>
-                  <SubItem>situação</SubItem>
+                  <SubBoxTitle>Receita</SubBoxTitle>
+                  <SubBox>${receita}</SubBox>
                 </Box>
                 <Box>
-                  <Item>Lucro</Item>
-                  <SubItem>situação</SubItem>
+                  <SubBoxTitle>Lucro</SubBoxTitle>
+                  <SubBox>
+                    ${lucro}
+                  </SubBox>
                 </Box>
-              </BoxContainer>
-              <div>
-              </div>
-              <Fab/>
-            </Detail>
-              <Img src="http://google.com"/>
-          </Content>
-          <Img src="http://google.com"/>
-      </Full>
-    );
+              </article>
+            </Details>
+            <Img src={`http://image.tmdb.org/t/p/w500//${poster_path}`} />
+          </Container>
+        </Fragment>
+      );
+    }
+  };
+  render() {
+    return <Fragment>{this.renderSingle()}</Fragment>;
   }
 }
 
-const mapStateToProps = state => ({ state: state.movieReducer });
+const mapStateToProps = state => ({
+  state: state.movieReducer
+});
 
-const mapDispatchToProps = dispatch => bindActionCreators({ getApiMovie }, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ getApiMovie }, dispatch);
 
-export default connect( mapStateToProps, mapDispatchToProps )(Movie);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Movie);
 
-export const Full = styled.section`
-  font-family: ${font.abel};
-`;
-
-export const Header = styled.header`
-  background-color: ${color.gray};
+const Header = styled.header`
+  background-color: ${color.tertiary};
   width: 100%;
   height: 100px;
   padding: 0 40px;
@@ -90,23 +114,18 @@ export const Header = styled.header`
   align-items: center;
 `;
 
-export const Title = styled.h1`
-   color: ${color.primary};
-   font-size: 37px;
+const Titlle = styled.h2`
+  color: ${color.primary};
+  font-size: 37px;
 `;
 
-export const Content = styled.article`
-  display: flex;
+const Sinopse = styled.p`
+  color: ${color.black};
+  margin: 20px 0 40px 0;
+  font-size: 23px;
 `;
 
-export const Detail = styled.div`
-  background-color: ${color.gray3};
-  width: calc(100% - 466.66px);
-  height: 700px;
-  padding: 40px;
-`;
-
-export const SubTitle = styled.h2`
+const SubTitle = styled.h2`
   font-size: 25px;
   color: ${color.primary};
   display: block;
@@ -115,34 +134,37 @@ export const SubTitle = styled.h2`
   padding-bottom: 10px;
 `;
 
-export const Descriptions = styled.p`
-  color: ${color.gray2};
-  margin: 20px 0 40px 0;
-  font-size: 23px;
-`;
-
-export const BoxContainer = styled.div`
+const Container = styled.article`
   display: flex;
-  justify-content:space-between;
 `;
 
-export const Box = styled.div`
+const Box = styled.div`
   display: inline-flex;
   flex-direction: column;
   margin-top: 20px;
   text-align: center;
 `;
-export const Item = styled.div`
-  color: ${color.primary};
-  font-size: 19px;
+
+const SubBoxTitle = styled.h1`
+    color: ${color.primary};
+    font-size: 19px;
 `;
 
-export const SubItem = styled.div`
-  color: ${color.gray2};
-  margin-top: 5px;
+const SubBox = styled.h2`
+    color: ${color.black};
+    margin-top: 5px;
 `;
 
-export const Img = styled.img`
+const Details = styled.div`
+  background-color: ${color.gray};
+  width: calc(100% - 466.66px);
+  height: 700px;
+  padding: 40px;
+  position: relative;
+  display: inline-block;
+`;
+
+const Img = styled.img`
   height: 700px;
   float: left;
 `;

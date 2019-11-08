@@ -55,14 +55,13 @@ function* getApiGenres() {
 }
 
 function* getMovieDetails({ payload }) {
-    yield console.log(payload.id);
     try {
       const { options } = movie(payload.id);
       const response = yield call(api.get, options.url);
       yield put({
         type: Types.SUCESS_MOVIE_API,
         payload: {
-          currentMovie: response.data
+          movieDetails: response.data
         }
       });
     } catch (error) {
