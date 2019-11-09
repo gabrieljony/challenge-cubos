@@ -152,6 +152,9 @@ const Header = styled.header`
 const Titlle = styled.h2`
   color: ${color.primary};
   font-size: 2.5em;
+  @media (max-width: 768px) {
+    font-size: 1.5em;
+    }
 `;
 
 const Sinopse = styled.p`
@@ -172,6 +175,7 @@ const SubTitle = styled.h2`
 const Box = styled.div`
   flex-direction: column;
   text-align: center;
+  margin-right: 10px;
 `;
 
 const SubBoxTitle = styled.h1`
@@ -189,22 +193,35 @@ const Info = styled.article`
     flex-direction:row;
     justify-content:space-between;
     padding: 1em 0 2em 0;
+    width:100%;
+    @media (max-width: 768px) {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
 `;
 
 const Content = styled.section`
     display:flex;
     flex-direction:row;
+    @media (max-width: 1200px) {
+        flex-direction:column;
+    }
 `;
 
 const Details = styled.div`
     background-color: ${color.gray3};
     width: calc(100% - 400px);
     padding: 2.5em;
+    @media (max-width: 1200px) {
+        width: calc(100% - 80px);
+    }
 `;
 
 const Img = styled.img`
-    width: 400px;
-    height: 600px;
+    @media (min-width: 1201px) {
+        height: 600px;
+        width: 400px;
+    }
 `;
 
 const Trailer = styled.section`

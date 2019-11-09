@@ -31,9 +31,8 @@ export default Date;
 const BoxDate = styled.div`
     ${({ float }) =>
         float
-            ? ` width: calc(100% - 140px);
-            position: relative;
-            left: 140px;
+            ? ` position: absolute;
+            margin-left: 145px;
             padding-top: 0.2em; `
             : ``}
 `;

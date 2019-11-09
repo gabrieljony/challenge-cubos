@@ -42,25 +42,32 @@ const Container = styled.article`
   margin-bottom: 2em;
   justify-content: flex-start;
   flex-grow: 1;
+  @media (max-width: 768px) {
+        flex-direction: column;
+    }
 `;
 
 const Img = styled.img`
   width: 350px;
   background-color: ${color.primary};
-  height: calc((${heightBox} +  ${heightHeader}));
-  @media (max-width: 992px) {
-        width: 240px;
-        height: calc((${heightBox} +  ${heightHeader}) /1.5);
+  @media (max-width: 768px) {
+    width: 100%;
+    }
+  @media (min-width: 769px) {
+    height: calc((${heightBox} +  ${heightHeader}));
     }
 `;
 
 const Content = styled.div`
   width: 100%;
   background-color: ${color.gray};
-  height: calc((${heightBox} +  ${heightHeader}));
-  @media (max-width: 992px) {
-        height: calc((${heightBox} +  ${heightHeader}) /1.5);
+  @media (max-width: 768px) {
+    width: 100%;
     }
+  @media (min-width: 769px) {
+    height: calc((${heightBox} +  ${heightHeader}));
+    }
+
 `;
 
 const Header = styled.header`
@@ -75,15 +82,20 @@ const Title = styled.h1`
   color: ${color.secondary};
   font-family: ${font.abel};
   font-size: 2em;
-  width: 100%;
   width: calc(100% - 2em);
   position: relative;
-  left: 52px;
+  left: 45px;
   padding-top: 0.5em;
+  @media (max-width: 768px) {
+    font-size: 1.2em;
+    }
+  @media (max-width: 575px) {
+    font-size: 0.8em;
+    }
 `;
 
 const Box = styled.div`
-  padding: 2em;
+  padding: 4em 2em;
 `;
 
 const Sinopse = styled.p`

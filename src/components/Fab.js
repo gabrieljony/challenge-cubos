@@ -33,6 +33,7 @@ const Container = styled.div`
     background-color: ${color.secondary};
     display: flex;
     justify-content: center;
+    margin:2px;
     align-items: center;
     ${({ position }) =>
         position
