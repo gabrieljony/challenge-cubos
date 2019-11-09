@@ -26,9 +26,8 @@ class Search extends Component {
 
 
 // Redux
-const mapDispatchToProps = dispatch => bindActionCreators({ getSearch }, dispatch);
-
 const mapStateToProps = state => ({ state: state.reducers });
+const mapDispatchToProps = dispatch => bindActionCreators({ getSearch }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
 
@@ -42,19 +41,19 @@ const Container = styled.div`
         border: none;
         outline: none;
         background-color: ${color.gray};
-        color: ${color.black};
+        color: ${color.primary};
+        opacity: 0.5;
         font-size: 1.5em;
         padding-left: 1.5%;
         padding-right: 1.5%;
         &::placeholder {
-            color: ${color.black};
-            opacity: 0.5;
-            font-size: 0.8em;
+            color: ${color.primary};
+            font-size: 1em;
             @media (max-width: 340px) {
                 font-size: 0.5em;
             }
             @media (min-width: 341px) {
-                font-size: 0.6em;
+                font-size: 0.7em;
             }
         }
     }

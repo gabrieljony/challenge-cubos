@@ -1,7 +1,8 @@
 import api from "../../services/api";
 import { all } from "redux-saga/effects";
-import { put, takeLatest, call, delay} from 'redux-saga/effects'
+import { put, takeLatest, call, delay } from 'redux-saga/effects'
 import { movies, genres, movie } from "../../services/api";
+import moviePagination from "./moviePagination";
 
 const Types = {
     REQUEST_SEARCH: "REQUEST_SEARCH",
@@ -18,13 +19,19 @@ const Types = {
 // Our worker Saga: will perform the async increment task
 function* getRequestSearch(data) {
     try {
-        yield delay(1000);
         const query = data.payload.searchValue;
+        if (query === "") {
+            return;
+        }
         yield put({ type: Types.REQUEST_API });
+        yield delay(1000);
         const response = yield call(api.get, movies.options.url + query);
+
+        const moviesPagination = moviePagination(response);
+
         yield put({
             type: Types.REQUEST_SUCESS,
-            payload: { movies: response.data }
+            payload: { movies: response.data, ...moviesPagination }
         });
     } catch (error) {
         yield put({
@@ -56,23 +63,23 @@ function* getRequestGenre() {
 
 function* getRequestMovie({ payload }) {
     try {
-      const { options } = movie(payload.id);
-      const response = yield call(api.get, options.url);
-      yield put({
-        type: Types.MOVIE_SUCESS,
-        payload: {
-          movieDetails: response.data
-        }
-      });
+        const { options } = movie(payload.id);
+        const response = yield call(api.get, options.url);
+        yield put({
+            type: Types.MOVIE_SUCESS,
+            payload: {
+                movieDetails: response.data
+            }
+        });
     } catch (error) {
-      yield put({
-        type: Types.REQUEST_FAILED,
-        payload: {
-          error
-        }
-      });
+        yield put({
+            type: Types.REQUEST_FAILED,
+            payload: {
+                error
+            }
+        });
     }
-  }
+}
 
 // Our watcher Saga: spawn a new incrementAsync task on each INCREMENT_ASYNC
 function* watchIncrementAsync() {

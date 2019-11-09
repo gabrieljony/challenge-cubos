@@ -29,7 +29,7 @@ const Container = styled.div`
     width: 90px;
     height: 90px;
     border-radius: 120px;
-    border: 4px solid ${color.tertiary};
+    border: 4px solid ${color.primary};
     background-color: ${color.secondary};
     display: flex;
     justify-content: center;
@@ -47,7 +47,7 @@ const Content = styled.div`
   height: 80px;
   border-radius: 100px;
   border: 4px solid ${color.secondary};
-  background-color: ${color.tertiary};
+  background-color: ${color.primary};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,5 +56,5 @@ const Content = styled.div`
 const Title = styled.h1`
   color: ${color.secondary};
   font-family: ${font.abel};
-  font-size: 25px;
+  font-size: 2em;
 `;

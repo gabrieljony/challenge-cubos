@@ -8,6 +8,13 @@ import { Date, Chip } from './';
 import Fab from "./Fab";
 
 class Movie extends Component {
+    constructor() {
+        super();
+        this.state = {
+            messageNotFound: "Sinopse não disponível."
+        };
+    }
+
     componentDidMount() {
         this.props.getMovie(this.props.match.params.id);
     }
@@ -53,12 +60,12 @@ class Movie extends Component {
                     <Content>
                         <Details>
                             <SubTitle>Sinopse</SubTitle>
-                            <Sinopse>{overview}</Sinopse>
+                            <Sinopse>{overview || this.state.messageNotFound}</Sinopse>
                             <SubTitle>Informações</SubTitle>
                             <Info>
                                 <Box>
                                     <SubBoxTitle>Situação</SubBoxTitle>
-                                    <SubBox>{status}</SubBox>
+                                    <SubBox>{(status == "Released") ? "Lançado" : "Em Produção"}</SubBox>
                                 </Box>
                                 <Box>
                                     <SubBoxTitle>Idioma</SubBoxTitle>
@@ -109,7 +116,10 @@ class Movie extends Component {
     };
     render() {
         return <Fragment>{this.renderSingle()}</Fragment>;
-    }
+    };
+    static defaultProps = {
+        overview: "Sinopse não disponível."
+    };
 }
 
 const mapStateToProps = state => ({
@@ -208,6 +218,6 @@ const Trailer = styled.section`
 `;
 
 const Video = styled.h1`
-    color: ${color.tertiary};
+    color: ${color.primary};
     font-size: 2em;
 `;

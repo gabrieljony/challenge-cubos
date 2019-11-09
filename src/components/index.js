@@ -5,5 +5,6 @@ import Movie from "./Movie";
 import Date from "./Date";
 import Fab from "./Fab";
 import Chip from "./Chip";
+import Pagination from "./Pagination";
 
-export { Header, Search, Card, Movie, Date, Fab, Chip};
+export { Pagination, Header, Search, Card, Movie, Date, Fab, Chip };

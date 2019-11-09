@@ -4,12 +4,13 @@ const Types = {
     REQUEST_SEARCH: "REQUEST_SEARCH",
     REQUEST_GENRE: "REQUEST_GENRE",
     REQUEST_MOVIE: "REQUEST_MOVIE",
-    REQUEST_API: "REQUEST_API", 
+    REQUEST_API: "REQUEST_API",
     REQUEST_FAILED: "REQUEST_FAILED",
     REQUEST_SUCESS: "REQUEST_SUCESS",
     MOVIE_FAILED: "MOVIE_FAILED",
     MOVIE_SUCESS: "MOVIE_SUCESS",
     GENRES_SUCESS: "GENRES_SUCESS",
+    SET_PAGINATION: "SET_PAGINATION"
 };
 
 const init = {
@@ -18,6 +19,9 @@ const init = {
     error: false,
     loading: false,
     genres: null,
+    pagination: null,
+    requestSearch: false,
+    currentMovie: null
 };
 
 const reducers = (state = init, action) => {
@@ -26,10 +30,10 @@ const reducers = (state = init, action) => {
             return { ...state, ...action.payload };
         }
         case Types.REQUEST_API: {
-            return { ...state, loading: true };
+            return { ...state, requestSearch: true };
         }
         case Types.REQUEST_SUCESS: {
-            return { ...state, ...action.payload };
+            return { ...state, ...action.payload, requestSearch: false };
         }
         case Types.REQUEST_FAILED: {
             return { ...state, ...action.payload };
@@ -39,7 +43,16 @@ const reducers = (state = init, action) => {
         }
         case Types.MOVIE_SUCESS: {
             return { ...state, ...action.payload };
-          }
+        }
+        case Types.SET_PAGINATION: {
+            return {
+                ...state,
+                pagination: {
+                    ...state.pagination,
+                    paginationActual: action.payload.paginationActual
+                }
+            };
+        }
         default:
             return state;
     }

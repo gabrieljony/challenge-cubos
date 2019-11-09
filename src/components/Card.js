@@ -4,9 +4,14 @@ import { color, font } from '../theme';
 import { Date, Fab, Chip } from './';
 
 export default class Card extends Component {
+    constructor() {
+        super();
+        this.state = {
+            messageNotFound: "Sinopse não disponível."
+        };
+    }
     render() {
         const { release_date, popularity, title, poster_path, overview, genre_ids } = this.props;
-        console.log(this.props);
         return (
             <Container>
                 <Img src={`http://image.tmdb.org/t/p/w342///${poster_path}`} title={title} />
@@ -17,13 +22,16 @@ export default class Card extends Component {
                     </Header>
                     <Date value={release_date} float={true} />
                     <Box>
-                        <Sinopse>{overview}</Sinopse>
+                        <Sinopse>{overview || this.state.messageNotFound}</Sinopse>
                         <Chip genresIds={genre_ids} />
                     </Box>
                 </Content>
             </Container>
         );
     }
+    static defaultProps = {
+        overview: "Sinopse não disponível."
+    };
 }
 const heightHeader = "60px";
 const heightBox = "370px";
@@ -58,7 +66,7 @@ const Content = styled.div`
 const Header = styled.header`
   display: flex;
   align-items: center;
-  background-color: ${color.tertiary};
+  background-color: ${color.primary};
   width: 100%;
   height: ${heightHeader};
 `;

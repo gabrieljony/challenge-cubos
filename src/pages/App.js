@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Search } from '../components';
+import { Search, Pagination } from '../components';
 import CardList from '../components/CardList';
 
 import { bindActionCreators } from "redux";
@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import { getGenre } from "../redux/actions";
 
 class App extends Component {
-    
+
     componentDidMount() {
         this.props.getGenre();
     }
@@ -18,6 +18,7 @@ class App extends Component {
             <Fragment>
                 <Search />
                 <CardList />
+                <Pagination />
             </Fragment>
         );
     }
@@ -25,7 +26,7 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => bindActionCreators({ getGenre }, dispatch);
 
-export default connect( null, mapDispatchToProps )(App);
+export default connect(null, mapDispatchToProps)(App);
 
 
 
