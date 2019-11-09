@@ -1,19 +1,46 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color, font } from '../theme';
+import PropTypes from "prop-types";
 
-export default function Date() {
+const Date = ({ value, float }) => {
+    // Recebe aa data no formato === release_date: "2021-10-28"
+    const splitDate = value.split("-");
+    // Formatar a data: "28/10/2021"
+    const formatDate = `${splitDate[2]}/${splitDate[1]}/${splitDate[0]}`;
+
     return (
-        <Title>25/10/2017</Title>
+        <BoxDate float={float}>
+            <TitleDate>{formatDate}</TitleDate>
+        </BoxDate>
     );
 }
 
-const Title = styled.h1`
+Date.propTypes = {
+    value: PropTypes.string.isRequired,
+    float: PropTypes.bool
+};
+
+Date.defaultProps = {
+    value: "0000-00-00",
+    float: true
+};
+
+export default Date;
+
+const BoxDate = styled.div`
+    ${({ float }) =>
+        float
+            ? ` width: calc(100% - 140px);
+            position: relative;
+            left: 140px;
+            padding-top: 0.2em; `
+            : ``}
+`;
+
+const TitleDate = styled.h1`
   color: ${color.gray2};
   font-family: ${font.lato};
   opacity: 0.5;
   font-size: 1.5em;
-  /* position: relative;
-  left: 140px;
-  padding-top: 0.2em; */
 `;

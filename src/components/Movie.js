@@ -4,7 +4,8 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { getMovie } from "../redux/actions";
 import { color, font } from '../theme';
-import { Date } from './';
+import { Date, Chip } from './';
+import Fab from "./Fab";
 
 class Movie extends Component {
     componentDidMount() {
@@ -17,7 +18,7 @@ class Movie extends Component {
         var rhours = Math.floor(hours);
         var minutes = (hours - rhours) * 60;
         var rminutes = Math.round(minutes);
-        return `${rhours} h ${rminutes}m`;
+        return `${rhours}h${rminutes}min`;
     };
 
     renderSingle = () => {
@@ -30,7 +31,11 @@ class Movie extends Component {
                 spoken_languages,
                 runtime,
                 budget,
-                revenue
+                revenue,
+                video,
+                genres,
+                release_date,
+                popularity
             } = this.props.state.movieDetails;
 
             const languages = spoken_languages.map(({ name }) => name).join(" ")
@@ -43,7 +48,7 @@ class Movie extends Component {
                 <Container>
                     <Header>
                         <Titlle>{title}</Titlle>
-                        <Date />
+                        <Date value={release_date} float={false} />
                     </Header>
                     <Content>
                         <Details>
@@ -80,9 +85,24 @@ class Movie extends Component {
                                     </SubBox>
                                 </Box>
                             </Info>
+                            <Info>
+                                <div>
+                                    <Chip genresIds={genres && genres.map(({ id }) => id)} />
+                                </div>
+                                <Fab value={popularity} />
+                            </Info>
                         </Details>
-                        <Img src={`http://image.tmdb.org/t/p/w500//${poster_path}`} />
+                        <Img src={`http://image.tmdb.org/t/p/w500//${poster_path}`} alt={title} />
                     </Content>
+                    <Trailer>
+                        {
+                            video
+                                ?
+                                (<Video>Assistir Trailer</Video>)
+                                :
+                                (<Video>Trailer Unavailable</Video>)
+                        }
+                    </Trailer>
                 </Container>
             );
         }
@@ -107,14 +127,13 @@ export default connect(
 const Container = styled.div`
     font-family: ${font.abel};
     width: 100%;
-    height: 700px;
+    padding: 4em 0;
 `;
 
 const Header = styled.header`
   background-color: ${color.gray};
   height: 100px;
   padding: 0 2em;
-  margin-top: 2em;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -162,18 +181,33 @@ const Info = styled.article`
     padding: 1em 0 2em 0;
 `;
 
-const Content = styled.article`
+const Content = styled.section`
     display:flex;
     flex-direction:row;
 `;
 
 const Details = styled.div`
     background-color: ${color.gray3};
-    width: calc(100% - 450px);
+    width: calc(100% - 400px);
     padding: 2.5em;
 `;
 
 const Img = styled.img`
     width: 400px;
     height: 600px;
+`;
+
+const Trailer = styled.section`
+    margin-top: 4em;
+    background-color: ${color.gray};
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+const Video = styled.h1`
+    color: ${color.tertiary};
+    font-size: 2em;
 `;

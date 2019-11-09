@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { color, font } from '../theme';
-import {Date, Fab, Chip} from './';
+import { Date, Fab, Chip } from './';
 
 export default class Card extends Component {
     render() {
-        const { title, poster_path, overview, genre_ids } = this.props;
+        const { release_date, popularity, title, poster_path, overview, genre_ids } = this.props;
+        console.log(this.props);
         return (
             <Container>
                 <Img src={`http://image.tmdb.org/t/p/w342///${poster_path}`} title={title} />
                 <Content>
                     <Header>
-                        <Fab />
+                        <Fab value={popularity} position={true} />
                         <Title>{title}</Title>
                     </Header>
-                    <Date />
+                    <Date value={release_date} float={true} />
                     <Box>
                         <Sinopse>{overview}</Sinopse>
                         <Chip genresIds={genre_ids} />

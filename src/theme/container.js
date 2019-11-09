@@ -15,12 +15,10 @@ const Container = styled.section`
 
     }
     @media (min-width: 992px) {
-        margin-right: 15%;
-        margin-left: 15%;
+
     }
     @media (min-width: 1200px) {
-        margin-right: 15%;
-        margin-left: 15%;
+
     }
 `;
 
