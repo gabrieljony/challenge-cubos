@@ -1,12 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { Search, Pagination } from '../components';
-import CardList from '../components/CardList';
-
-import { bindActionCreators } from "redux";
-
-import { connect } from "react-redux";
-
-import { getGenre } from "../redux/actions";
+import { CardList } from '../components';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { getGenre } from '../redux/actions';
 
 class App extends Component {
 

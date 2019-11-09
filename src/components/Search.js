@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { color } from '../theme';
-
-// Redux
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { getSearch } from "../redux/actions";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getSearch } from '../redux/actions';
 
 class Search extends Component {
     render() {
@@ -14,8 +12,8 @@ class Search extends Component {
         return (
             <Container>
                 <input
-                    type="text"
-                    placeholder="Busque um filme por nome, ano ou gênero..."
+                    type='text'
+                    placeholder='Busque um filme por nome, ano ou gênero...'
                     value={searchValue}
                     onChange={e => getSearch(e)}
                 />

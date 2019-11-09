@@ -1,20 +1,20 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
 const Types = {
-    REQUEST_SEARCH: "REQUEST_SEARCH",
-    REQUEST_GENRE: "REQUEST_GENRE",
-    REQUEST_MOVIE: "REQUEST_MOVIE",
-    REQUEST_API: "REQUEST_API",
-    REQUEST_FAILED: "REQUEST_FAILED",
-    REQUEST_SUCESS: "REQUEST_SUCESS",
-    MOVIE_FAILED: "MOVIE_FAILED",
-    MOVIE_SUCESS: "MOVIE_SUCESS",
-    GENRES_SUCESS: "GENRES_SUCESS",
-    SET_PAGINATION: "SET_PAGINATION"
+    REQUEST_SEARCH: 'REQUEST_SEARCH',
+    REQUEST_GENRE: 'REQUEST_GENRE',
+    REQUEST_MOVIE: 'REQUEST_MOVIE',
+    REQUEST_API: 'REQUEST_API',
+    REQUEST_FAILED: 'REQUEST_FAILED',
+    REQUEST_SUCESS: 'REQUEST_SUCESS',
+    MOVIE_FAILED: 'MOVIE_FAILED',
+    MOVIE_SUCESS: 'MOVIE_SUCESS',
+    GENRES_SUCESS: 'GENRES_SUCESS',
+    SET_PAGINATION: 'SET_PAGINATION'
 };
 
 const init = {
-    searchValue: "",
+    searchValue: '',
     movies: null,
     error: false,
     loading: false,

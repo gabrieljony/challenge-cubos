@@ -1,11 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import { color, font } from '../theme';
-
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-
-import { getGenre } from "../redux/actions";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getGenre } from '../redux/actions';
 
 class Chip extends Component {
     componentDidMount() {

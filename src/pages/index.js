@@ -1,4 +1,4 @@
-import App from "./App";
-import Detail from "./Detail";
+import App from './App';
+import Detail from './Detail';
 
 export { App, Detail };

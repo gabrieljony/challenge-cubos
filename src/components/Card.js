@@ -7,7 +7,7 @@ export default class Card extends Component {
     constructor() {
         super();
         this.state = {
-            messageNotFound: "Sinopse não disponível."
+            mensage: "Sinopse não disponível."
         };
     }
     render() {
@@ -22,7 +22,7 @@ export default class Card extends Component {
                     </Header>
                     <Date value={release_date} float={true} />
                     <Box>
-                        <Sinopse>{overview || this.state.messageNotFound}</Sinopse>
+                        <Sinopse>{overview || this.state.mensage}</Sinopse>
                         <Chip genresIds={genre_ids} />
                     </Box>
                 </Content>

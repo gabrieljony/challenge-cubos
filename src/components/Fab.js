@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 import { color, font } from '../theme';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const Fab = ({ value, position }) => {
     return (

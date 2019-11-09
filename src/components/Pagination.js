@@ -1,11 +1,9 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-
-import { setPagination } from "../redux/actions";
-
-import styled from "styled-components";
-import { color, font } from "../theme/variable";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { setPagination } from '../redux/actions';
+import styled from 'styled-components';
+import { color, font } from '../theme/variable';
 
 class Pagination extends Component {
     setPage = page => {

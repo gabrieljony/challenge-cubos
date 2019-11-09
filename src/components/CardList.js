@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import Card from "./Card";
+import { Card } from './';
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { color, font } from "../theme/variable";

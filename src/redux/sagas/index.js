@@ -1,26 +1,26 @@
-import api from "../../services/api";
-import { all } from "redux-saga/effects";
+import api from '../../services/api';
+import { all } from 'redux-saga/effects';
 import { put, takeLatest, call, delay } from 'redux-saga/effects'
-import { movies, genres, movie } from "../../services/api";
-import moviePagination from "./moviePagination";
+import { movies, genres, movie } from '../../services/api';
+import moviePagination from './moviePagination';
 
 const Types = {
-    REQUEST_SEARCH: "REQUEST_SEARCH",
-    REQUEST_API: "REQUEST_API",
-    REQUEST_SUCESS: "REQUEST_SUCESS",
-    REQUEST_FAILED: "REQUEST_FAILED",
-    REQUEST_GENRE: "REQUEST_GENRE",
-    REQUEST_MOVIE: "REQUEST_MOVIE",
-    GENRES_SUCESS: "GENRES_SUCESS",
-    MOVIE_SUCESS: "MOVIE_SUCESS",
-    MOVIE_FAILED: "MOVIE_FAILED"
+    REQUEST_SEARCH: 'REQUEST_SEARCH',
+    REQUEST_API: 'REQUEST_API',
+    REQUEST_SUCESS: 'REQUEST_SUCESS',
+    REQUEST_FAILED: 'REQUEST_FAILED',
+    REQUEST_GENRE: 'REQUEST_GENRE',
+    REQUEST_MOVIE: 'REQUEST_MOVIE',
+    GENRES_SUCESS: 'GENRES_SUCESS',
+    MOVIE_SUCESS: 'MOVIE_SUCESS',
+    MOVIE_FAILED: 'MOVIE_FAILED'
 };
 
 // Our worker Saga: will perform the async increment task
 function* getRequestSearch(data) {
     try {
         const query = data.payload.searchValue;
-        if (query === "") {
+        if (query === '') {
             return;
         }
         yield put({ type: Types.REQUEST_API });

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color, font } from '../theme';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const Date = ({ value, float }) => {
     // Recebe aa data no formato === release_date: "2021-10-28"

@@ -1,17 +1,16 @@
-import React, { Component, Fragment } from "react";
-import styled from "styled-components";
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
-import { getMovie } from "../redux/actions";
+import React, { Component, Fragment } from 'react';
+import styled from 'styled-components';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { getMovie } from '../redux/actions';
 import { color, font } from '../theme';
-import { Date, Chip } from './';
-import Fab from "./Fab";
+import { Date, Chip, Fab } from './';
 
 class Movie extends Component {
     constructor() {
         super();
         this.state = {
-            messageNotFound: "Sinopse não disponível."
+            mensage: 'Sinopse não disponível.'
         };
     }
 
@@ -45,11 +44,11 @@ class Movie extends Component {
                 popularity
             } = this.props.state.movieDetails;
 
-            const languages = spoken_languages.map(({ name }) => name).join(" ")
+            const languages = spoken_languages.map(({ name }) => name).join(' ')
             const time = this.timeConvert(runtime);
-            const orcamento = budget.toLocaleString("en-US");
-            const receita = revenue.toLocaleString("en-US");
-            const lucro = (revenue - budget).toLocaleString("en-US")
+            const orcamento = budget.toLocaleString('en-US');
+            const receita = revenue.toLocaleString('en-US');
+            const lucro = (revenue - budget).toLocaleString('en-US')
 
             return (
                 <Container>
@@ -60,12 +59,12 @@ class Movie extends Component {
                     <Content>
                         <Details>
                             <SubTitle>Sinopse</SubTitle>
-                            <Sinopse>{overview || this.state.messageNotFound}</Sinopse>
+                            <Sinopse>{overview || this.state.mensage}</Sinopse>
                             <SubTitle>Informações</SubTitle>
                             <Info>
                                 <Box>
                                     <SubBoxTitle>Situação</SubBoxTitle>
-                                    <SubBox>{(status == "Released") ? "Lançado" : "Em Produção"}</SubBox>
+                                    <SubBox>{(status === 'Released') ? 'Lançado' : 'Em Produção'}</SubBox>
                                 </Box>
                                 <Box>
                                     <SubBoxTitle>Idioma</SubBoxTitle>
@@ -118,7 +117,7 @@ class Movie extends Component {
         return <Fragment>{this.renderSingle()}</Fragment>;
     };
     static defaultProps = {
-        overview: "Sinopse não disponível."
+        overview: 'Sinopse não disponível.'
     };
 }
 

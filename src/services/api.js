@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
-const urlAPI = "https://api.themoviedb.org/3/";
-const apikey = "67f2745bfbab836b3214ba02776d32ba";
-const language = "language=pt-br";
+const urlAPI = 'https://api.themoviedb.org/3/';
+const apikey = '67f2745bfbab836b3214ba02776d32ba';
+const language = 'language=pt-br';
 
 const api = axios.create({
     baseURL: urlAPI
